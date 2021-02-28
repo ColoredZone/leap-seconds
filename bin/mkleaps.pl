@@ -16,24 +16,26 @@ if ($0 eq __FILE__) {
  printf "exp_date: %u -- MJD: %.1f; %s\n",$exp_date,mjdNumber($exp_date),ntpDate($exp_date);
  use YAML::XS qw(Dump);
  my $data = &dataLeaps($deltas);
- &txtLeaps('src/leap-seconds.txt',$mod_date,$exp_date,$deltas);
+ &txtLeaps('src/leap-seconds.dat',$mod_date,$exp_date,$deltas);
  &txtLeaps('src/leap-seconds.list',$mod_date,$exp_date,$deltas);
  &csvLeaps('src/leap-seconds.csv',$mod_date,$exp_date,$deltas);
+ &csvLeaps('src/leap-seconds.json',$mod_date,$exp_date,$deltas);
+ &csvLeaps('src/leap-seconds.js',$mod_date,$exp_date,$deltas);
 
+ &txtLeaps('src/leap-seconds-list.dat',$last_date,$exp_date,$deltas);
  &txtLeaps('src/leap-seconds-list.txt',$last_date,$exp_date,$deltas);
  &ymlLeaps('src/leap-seconds-list.yml',$last_date,$exp_date,$deltas);
  &jsonLeaps('src/leap-seconds-list.json',$last_date,$exp_date,$deltas);
  &jsLeaps('src/leap-seconds-list.js',$last_date,$exp_date,$deltas);
 
  my $now_date = sprintf'%u',$^T + $ntp_offset;
- &txtLeaps('src/leaps.dat',$mod_date,$exp_date,$deltas);
- &txtLeaps('src/last_leaps.dat',$last_date,$exp_date,$deltas);
- &txtLeaps('src/now_leaps.dat',$now_date,$exp_date,$deltas);
+ &txtLeaps('src/leap-seconds-now.dat',$now_date,$exp_date,$deltas);
+ &txtLeaps('src/leap-seconds-now.txt',$last_date,$exp_date,$deltas);
 
- &nxtLeaps('src/skip_leaps.txt',$exp_date,$deltas,0);
- &nxtLeaps('src/add_leaps.txt',$exp_date,$deltas,1);
- &nxtLeaps('src/skip_leaps.dat',$exp_date,$deltas,0);
- &nxtLeaps('src/add_leaps.dat',$exp_date,$deltas,1);
+ &nxtLeaps('src/leap-seconds-skip.txt',$exp_date,$deltas,0);
+ &nxtLeaps('src/leap-seconds-add.txt',$exp_date,$deltas,1);
+ &nxtLeaps('src/leap-seconds-skip.dat',$exp_date,$deltas,0);
+ &nxtLeaps('src/leap-seconds-add.dat',$exp_date,$deltas,1);
 
  printf "data: %s\n",$data;
  my $digest = hashLeaps($mod_date,$exp_date,$data);
