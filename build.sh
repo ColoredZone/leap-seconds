@@ -8,6 +8,7 @@ echo tic: $tic
 perl bin/mkleaps.pl test/obspm.txt
 ipfs add -w --raw-leaves --hash sha1 --cid-base base16 --pin=true src/leap-seconds*.dat src/leap-seconds*.txt
 qmleap=$(ipfs add src/leap-seconds-list.txt -Q)
+ntp_exp=$(greo -e '^#@ ' src/leap-seconds-list.txt | cut -d' ' -f2)
 echo qmleap: $qmleap
 qm=$(ipfs add -w -r . -Q)
 echo qm: $qm
@@ -21,6 +22,7 @@ mv _data/leaps.yml data.yml
 sed -e "s/qm: .*/qm: $qm/" -e "s/ntp_now: .*/ntp_now: $ntp/" \
     -e "s/k5mut: .*/k5mut: $key/" \
     -e "s/qmleap: .*/qmleap: $qmleap/" \
+    -e "s/ntp_exp: .*/ntp_exp: $ntp_exp/" \
     -e "s/sha1: .*/sha1: '$sha1'/" \
     -e "s/list: .*/list: '$list'/" data.yml > _data/leaps.yml
 rm data.yml
