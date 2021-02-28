@@ -13,7 +13,7 @@ qm=$(ipfs add -w -r . -Q)
 echo qm: $qm
 key=$(ipfs key list -l | grep -w leap-seconds-list | cut -d' ' -f1)
 echo key: $key
-ipfs name publish --key=$key /ipfs/$qm
+ipfs name publish --key=$key /ipfs/$qm --allow-offline
 list=$(cat src/leap-seconds.dat)
 sha1=$(echo $list | openssl sha1 -r | cut -d' ' -f1)
 echo sha1: $sha1
@@ -26,5 +26,25 @@ sed -e "s/qm: .*/qm: $qm/" -e "s/ntp_now: .*/ntp_now: $ntp/" \
 rm data.yml
 #echo $ntp: $qm >> qm.log
 jekyll build
-git commit -a
+date=$(date +%D)
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if git commit -a ; then
+gitid=$(git rev-parse HEAD)
+git tag -f -a $ver -m "tagging $gitid on $date"
+#echo gitid: ${gitid:0:9} # this is bash!
+echo gitid: $gitid | cut -b 1-14
+if test -e revs.log; then
+echo $tic: $gitid >> revs.log
+fi
+
+# test if tag $ver exist ...
+remote=$(git rev-parse --abbrev-ref @{upstream} |cut -d/ -f 1)
+if git ls-remote --tags | grep "$ver"; then
+git push --delete $remote "$ntp"
+fi
+fi
+echo "git push : "
+git push --follow-tags $remote $branch
+echo .
 

@@ -12,7 +12,7 @@ We put the [leap-seconds.list][3] file on the blockchain current file is at
      sha1: [{{site.data.leaps.sha1}}][1]
 <br> qm: [{{site.data.leaps.qmleaps}}][2]
 
- It expires on {{site.data.leaps.ntp_exp | minus: site.data.leaps.ntp_offset | date_to_rfc882 }}
+ It expires on {{site.data.leaps.ntp_exp | minus: site.data.leaps.ntp_offset | date_to_rfc822 }}
 
 
 [1]: https://duckduckgo.com/?q={{site.data.leaps.sha1}}

@@ -1,0 +1,97 @@
+---
+ntp_offset: 2208992400
+git_org: https://github.com/ColoredZone
+git_repo: https://github.com/ColoredZone/leaps
+---
+#
+# This file is the leap-seconds.list file.
+#
+# It containts a table of correction to compute
+# Atomic Time from UTC:
+#
+#  TAI = UTC + DTAI
+#  UT1 = UTC + DU1
+#
+# it was modified on {{site.data.leaps.ntp_mod | minus: page.ntp_offset | date_to_rfc822 }}
+#$ {{site.data.leaps.ntp_mod}}
+# and expires on {{site.data.leaps.ntp_exp | minus: page.ntp_offset | date_to_rfc822 }}
+#@ {{site.data.leaps.ntp_exp}}
+#
+# a json file is available here : <{{page.git_org}}/leaps/leap-seconds.json>
+# a yaml file is available here : <{{page.git_org}}/leaps/leap-seconds.json>
+#
+#
+# list: "{{site.data.leaps.list}}"
+# sha1: {{site.data.leaps.sha1}}
+#
+#	LIST OF LEAP SECONDS
+#	NTP Time is the number of seconds since 1 Jan 1900 00:00:00
+#
+#	DTAI: The difference DTAI= TAI-UTC in units of seconds
+#	It is the quantity to add to UTC to get the time in TAI
+#
+#	Day Month Year : epoch in clear
+#
+# NTP Time      DTAI    Day Month Year
+#
+2272060800      10      # 1 Jan 1972
+2287785600      11      # 1 Jul 1972
+2303683200      12      # 1 Jan 1973
+2335219200      13      # 1 Jan 1974
+2366755200      14      # 1 Jan 1975
+2398291200      15      # 1 Jan 1976
+2429913600      16      # 1 Jan 1977
+2461449600      17      # 1 Jan 1978
+2492985600      18      # 1 Jan 1979
+2524521600      19      # 1 Jan 1980
+2571782400      20      # 1 Jul 1981
+2603318400      21      # 1 Jul 1982
+2634854400      22      # 1 Jul 1983
+2698012800      23      # 1 Jul 1985
+2776982400      24      # 1 Jan 1988
+2840140800      25      # 1 Jan 1990
+2871676800      26      # 1 Jan 1991
+2918937600      27      # 1 Jul 1992
+2950473600      28      # 1 Jul 1993
+2982009600      29      # 1 Jul 1994
+3029443200      30      # 1 Jan 1996
+3076704000      31      # 1 Jul 1997
+3124137600      32      # 1 Jan 1999
+3345062400      33      # 1 Jan 2006
+3439756800      34      # 1 Jan 2009
+3550089600      35      # 1 Jul 2012
+3644697600      36      # 1 Jul 2015
+3692217600      37      # 1 Jan 2017
+#
+#
+#	ATOMIC TIME.
+#	The Coordinated Universal Time (UTC) is the reference time scale derived 
+#	from The "Temps Atomique International" (TAI) calculated by the Bureau 
+#	International des Poids et Mesures (BIPM) using a worldwide network of atomic 
+#	clocks. UTC differs from TAI by an integer number of seconds; it is the basis 
+#	of all activities in the world. 
+#
+#	ASTRONOMICAL TIME (UT1) is the time scale based on the rate of rotation of the earth. 
+#	It is now mainly derived from Very Long Baseline Interferometry (VLBI). The various 
+#	irregular fluctuations progressively detected in the rotation rate of the Earth lead 
+#	in 1972 to the replacement of UT1 by UTC as the reference time scale. 
+#
+#	RESPONSABILITY OF THE DECISION TO INTRODUCE A LEAP SECOND IN UTC
+#	The decision to introduce a leap second in UTC is the responsibility of the Earth Orientation Center of 
+#	the International Earth Rotation and reference System Service (IERS). This center is located at Paris 
+#	Observatory. According to international agreements, leap seconds should only be scheduled for certain dates:
+#	first preference is given to the end of December and June, and second preference at the end of March 
+#	and September. Since the introduction of leap seconds in 1972, only dates in June and December were used.
+#
+#		Questions or comments to:
+#			Christian Bizouard:  <christian.bizouard@obspm.fr>
+#			Earth orientation Center of the IERS
+#			Paris Observatory, France	
+#
+#	A hash code (SHA1) has been generated to be able to verify the integrity
+#	of this file. For more information about using this hash code,
+#	see the [README]({{page.gist_url}}/README.md) file 
+#
+#  sha1: {{site.data.leaps.sha1}}
+#
+#h	89073fa8 9e913fd7 60559aa5 29d1feee 5b0f6c91
