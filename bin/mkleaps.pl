@@ -24,6 +24,7 @@ if ($0 eq __FILE__) {
 
  &txtLeaps('src/leap-seconds-list.dat',$last_date,$exp_date,$deltas);
  &txtLeaps('src/leap-seconds-list.txt',$last_date,$exp_date,$deltas);
+ &csvLeaps('src/leap-seconds-list.csv',$last_date,$exp_date,$deltas);
  &ymlLeaps('src/leap-seconds-list.yml',$last_date,$exp_date,$deltas);
  &jsonLeaps('src/leap-seconds-list.json',$last_date,$exp_date,$deltas);
  &jsLeaps('src/leap-seconds-list.js',$last_date,$exp_date,$deltas);
